@@ -1,0 +1,28 @@
+:root {
+  /* Brand Colors */
+  --bg-primary: #121212;
+  --bg-surface: #1b1b1b;
+  --bg-elevated: #242424;
+  --border-subtle: #2f2f2f;
+  --border-strong: #424242;
+
+  --accent-orange: #e16527;
+  --accent-orange-hover: #c9551c;
+  --accent-orange-soft: rgba(225, 101, 39, 0.14);
+
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #848484;
+
+  --status-ok: #2ea043;
+  --status-warn: #d29922;
+  --status-danger: #f85149;
+
+  /* Two Fonts Only: Bebas Neue (Display) + Montserrat (Body/Tables) */
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --container-max: 1240px;
+}
