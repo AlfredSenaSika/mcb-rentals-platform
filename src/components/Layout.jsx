@@ -1,10 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
+import { ShoppingBag } from 'lucide-react';
 import { MCB_CONFIG } from '../lib/config';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 
 export function Layout({ children }) {
   const location = useLocation();
   const { staffProfile, signOutStaff } = useAuth();
+  const { totalCount } = useCart();
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -21,10 +24,13 @@ export function Layout({ children }) {
           className="container"
           style={{
             display: 'flex',
+            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: 68,
-            gap: 16,
+            minHeight: 68,
+            paddingTop: 8,
+            paddingBottom: 8,
+            gap: 14,
           }}
         >
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -36,7 +42,7 @@ export function Layout({ children }) {
             </span>
           </Link>
 
-          <nav style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 13, fontWeight: 600 }}>
+          <nav style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 16, fontSize: 13, fontWeight: 600 }}>
             <Link
               to="/"
               style={{
@@ -44,6 +50,30 @@ export function Layout({ children }) {
               }}
             >
               Storefront
+            </Link>
+            <Link
+              to="/policies"
+              style={{
+                color: location.pathname === '/policies' ? 'var(--accent-orange)' : 'var(--text-secondary)',
+              }}
+            >
+              Policies
+            </Link>
+            <Link
+              to="/signup"
+              style={{
+                color: location.pathname === '/signup' ? 'var(--accent-orange)' : 'var(--text-secondary)',
+              }}
+            >
+              Sign Up
+            </Link>
+            <Link
+              to="/cart"
+              className="btn btn-secondary"
+              style={{ padding: '7px 12px', fontSize: 12 }}
+            >
+              <ShoppingBag size={14} />
+              Cart ({totalCount})
             </Link>
             <Link
               to="/staff"
@@ -93,8 +123,12 @@ export function Layout({ children }) {
             <strong style={{ color: '#fff' }}>{MCB_CONFIG.brandName}</strong> ·{' '}
             {MCB_CONFIG.address}
           </div>
-          <div>
-            {MCB_CONFIG.hours} · WhatsApp +{MCB_CONFIG.whatsappNumber}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+            <Link to="/policies" style={{ color: 'var(--accent-orange)' }}>
+              Rental Policies
+            </Link>
+            <span>{MCB_CONFIG.hours}</span>
+            <span>WhatsApp +{MCB_CONFIG.whatsappNumber}</span>
           </div>
         </div>
       </footer>

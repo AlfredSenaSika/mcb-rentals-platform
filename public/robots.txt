@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /staff
+Disallow: /staff/login
+Disallow: /receipt/
+
+Sitemap: https://mcbrental.com/sitemap.xml
